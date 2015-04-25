@@ -5,7 +5,7 @@ from flask import (
 )
 
 from data import DATA
-from logic import generate_scorecard
+from logic import Scorecard
 
 
 app = Flask(__name__)
@@ -81,8 +81,16 @@ def four():
         'arts': arts,
         'spots': spots,
     }
-    scorecard = generate_scorecard(user_prefs)
-    return scorecard
+    scorecard = Scorecard.generate(user_prefs)
+    winner, ratings, distances = Scorecard.select_winner(scorecard)
+
+    info = {
+        'winner': winner,
+        'ratings': ratings,
+        'distances': distances,
+    }
+
+    return render_template('extends/final.html', **info)
 
 
 if __name__ == '__main__':
