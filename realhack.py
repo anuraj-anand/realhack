@@ -20,29 +20,46 @@ route = lambda _r: app.route(_r, methods=('GET', 'POST'))
 
 @route('/')
 def index():
-    info = {'cities': DATA.CITIES}
-    return render_template('index.html', **info)
+    info = {
+        'options': DATA.CITIES,
+        'multi': False,
+        'next': '/one',
+        'store': 'city',
+    }
+    return render_template('page.html', **info)
 
 
 @route('/one')
 def one():
     session['city'] = request.form['city']
-    info = {'cuisines': DATA.CUISINES}
-    return render_template('one.html', **info)
+    info = {
+        'options': DATA.CUISINES,
+        'multi': True,
+        'next': '/two',
+    }
+    return render_template('page.html', **info)
 
 
 @route('/two')
 def two():
     session['cuisines'] = tuple(request.form.keys())
-    info = {'arts': DATA.ARTS}
-    return render_template('two.html', **info)
+    info = {
+        'options': DATA.ARTS,
+        'multi': True,
+        'next': '/three',
+    }
+    return render_template('page.html', **info)
 
 
 @route('/three')
 def three():
     session['arts'] = tuple(request.form.keys())
-    info = {'spots': DATA.SPOTS}
-    return render_template('three.html', **info)
+    info = {
+        'options': DATA.SPOTS,
+        'multi': True,
+        'next': '/four',
+    }
+    return render_template('page.html', **info)
 
 
 @route('/four')
