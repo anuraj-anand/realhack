@@ -5,6 +5,7 @@ from flask import (
 )
 
 from data import DATA
+from logic import generate_scorecard
 
 
 app = Flask(__name__)
@@ -66,8 +67,14 @@ def three():
 @route('/four')
 def four():
     session['spots'] = tuple(request.form.keys())
-    print(str(session))
-    return redirect('/')
+    user_prefs = {
+        'city': session['city'],
+        'cuisines': session['cuisines'],
+        'arts': session['arts'],
+        'spots': session['spots'],
+    }
+    scorecard = generate_scorecard(user_prefs)
+    return scorecard
 
 
 if __name__ == '__main__':
