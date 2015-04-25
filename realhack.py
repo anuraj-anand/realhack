@@ -16,6 +16,7 @@ app.debug = True
 
 # aliases
 route = lambda _r: app.route(_r, methods=('GET', 'POST'))
+render_page = lambda _p: render_template('extends/page.html', **_p)
 
 
 @route('/')
@@ -26,7 +27,7 @@ def index():
         'next': '/one',
         'store': 'city',
     }
-    return render_template('page.html', **info)
+    return render_page(info)
 
 
 @route('/one')
@@ -37,7 +38,7 @@ def one():
         'multi': True,
         'next': '/two',
     }
-    return render_template('page.html', **info)
+    return render_page(info)
 
 
 @route('/two')
@@ -48,7 +49,7 @@ def two():
         'multi': True,
         'next': '/three',
     }
-    return render_template('page.html', **info)
+    return render_page(info)
 
 
 @route('/three')
@@ -59,7 +60,7 @@ def three():
         'multi': True,
         'next': '/four',
     }
-    return render_template('page.html', **info)
+    return render_page(info)
 
 
 @route('/four')
