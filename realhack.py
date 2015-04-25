@@ -1,5 +1,6 @@
 from flask import (
-    Flask, render_template,
+    Flask,
+    redirect, render_template,
     request, session,
 )
 
@@ -24,7 +25,7 @@ def one():
     session['city'] = request.form['city']
     info = {'cuisines': DATA.CUISINES}
     return render_template('one.html', **info)
-
+    
 
 @app.route('/two')
 def two():
@@ -38,6 +39,13 @@ def three():
     session['arts'] = tuple(request.form.keys())
     info = {'spots': DATA.SPOTS}
     return render_template('three.html', **info)
+
+
+@app.route('/four')
+def four():
+    session['spots'] = tuple(request.form.keys())
+    print(str(session))
+    return redirect('/')
 
 
 if __name__ == '__main__':
