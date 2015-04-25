@@ -29,5 +29,12 @@ def two():
     return render_template('two.html', **info)
 
 
+@app.route('/three')
+def three():
+    session['arts'] = tuple(request.form.keys())
+    info = {'spots': DATA.SPOTS}
+    return render_template('three.html', **info)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

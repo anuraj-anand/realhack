@@ -19,3 +19,11 @@ class DATA():
         'Museum',
         'Place Of Worship',
     )
+
+    SPOTS = (
+        'Amusement Park',
+        'Bar',
+        'Gym',
+        'School',
+        'Shopping Mall',
+    )
