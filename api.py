@@ -89,12 +89,13 @@ class PlacesAPI(GoogleMapsAPI):
     MAX_RADIUS = '1000'  # meters
 
     @classmethod
-    def nearby_search(cls, place_name, nearby_type):
-        place_coords = GeocodeAPI.get_coords(place_name)
+    def nearby_search(cls, place, nearby_type):
+        if ',' not in place:  # check if coords
+            place = GeocodeAPI.get_coords(place)
 
         response = cls.request(
             {
-                'location': place_coords,
+                'location': place,
                 'radius': cls.MAX_RADIUS,
                 'types': nearby_type,
             },
@@ -105,12 +106,13 @@ class PlacesAPI(GoogleMapsAPI):
         return results
 
     @classmethod
-    def text_search(cls, place_name, nearby_type, text):
-        place_coords = GeocodeAPI.get_coords(place_name)
+    def text_search(cls, place, nearby_type, text):
+        if ',' not in place:  # check if coords
+            place = GeocodeAPI.get_coords(place)
 
         response = cls.request(
             {
-                'location': place_coords,
+                'location': place,
                 'radius': cls.MAX_RADIUS,
                 'query': text,
                 'types': nearby_type,
