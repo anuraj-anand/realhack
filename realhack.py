@@ -8,6 +8,10 @@ from data import DATA
 
 app = Flask(__name__)
 
+# app config
+app.secret_key = 'xyz123abc098'
+app.debug = True
+
 
 @app.route('/')
 def index():
@@ -37,4 +41,4 @@ def three():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
