@@ -1,0 +1,7 @@
+{% extends 'extends/input.html' %}
+
+{% block form %}
+{% for option in options %}
+    <input type="checkbox" name="{{ option }}" value="">{{ option }}</input><br>
+{% endfor %}
+{% endblock %}

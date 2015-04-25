@@ -1,0 +1,9 @@
+{% extends 'extends/base.html' %}
+
+{% block body %}
+<form action='{{ next }}' method="post">
+    {% block form %}
+    {% endblock %}
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}
