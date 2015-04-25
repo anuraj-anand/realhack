@@ -14,34 +14,38 @@ app.secret_key = 'xyz123abc098'
 app.debug = True
 
 
-@app.route('/')
+# aliases
+route = lambda _r: app.route(_r, methods=('GET', 'POST'))
+
+
+@route('/')
 def index():
     info = {'cities': DATA.CITIES}
     return render_template('index.html', **info)
 
 
-@app.route('/one')
+@route('/one')
 def one():
     session['city'] = request.form['city']
     info = {'cuisines': DATA.CUISINES}
     return render_template('one.html', **info)
-    
 
-@app.route('/two')
+
+@route('/two')
 def two():
     session['cuisines'] = tuple(request.form.keys())
     info = {'arts': DATA.ARTS}
     return render_template('two.html', **info)
 
 
-@app.route('/three')
+@route('/three')
 def three():
     session['arts'] = tuple(request.form.keys())
     info = {'spots': DATA.SPOTS}
     return render_template('three.html', **info)
 
 
-@app.route('/four')
+@route('/four')
 def four():
     session['spots'] = tuple(request.form.keys())
     print(str(session))
