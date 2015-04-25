@@ -1,7 +1,14 @@
 class DATA():
 
-    CITIES = [
+    CITIES = (
         'Bangalore',
         'Delhi',
         'Mumbai',
-    ]
+    )
+
+    CUISINES = (
+        'Chinese',
+        'North Indian',
+        'South Indian',
+        'Continental',
+    )
