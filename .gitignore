@@ -3,3 +3,7 @@
 
 # virtualenv
 venv/
+
+# python cache
+__pycache__/
+*.py[cod]
