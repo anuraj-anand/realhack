@@ -22,5 +22,12 @@ def one():
     return render_template('one.html', **info)
 
 
+@app.route('/two')
+def two():
+    session['cuisines'] = tuple(request.form.keys())
+    info = {'arts': DATA.ARTS}
+    return render_template('two.html', **info)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

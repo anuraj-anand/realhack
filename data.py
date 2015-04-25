@@ -12,3 +12,10 @@ class DATA():
         'South Indian',
         'Continental',
     )
+
+    ARTS = (
+        'Art Gallery',
+        'Book Store',
+        'Museum',
+        'Place Of Worship',
+    )
