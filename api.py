@@ -6,17 +6,12 @@ list_join = lambda _i: str_join('|', _i)
 url_join = lambda _a: str_join('/', _a)
 
 
-class ResponseParser():
-
-    @staticmethod
-    def parse_coords(result):
-        geometry = result['geometry']
-        location = geometry['location']
-        lat = location['lat']
-        lng = location['lng']
-        coords = str_join(',', (lat, lng))
-
-        return coords
+def parse_coords(result):
+    location = result['geometry']['location']
+    lat = location['lat']
+    lng = location['lng']
+    coords = str_join(',', (lat, lng))
+    return coords
 
 
 class GoogleMapsAPI():
@@ -32,8 +27,6 @@ class GoogleMapsAPI():
     ENDPOINT = ''
 
     RESPONSE_TYPE = 'json'  # or 'xml'
-
-    MAX_RADIUS = '1000'  # meters
 
     @classmethod
     def request(cls, payload, service=''):
@@ -63,7 +56,7 @@ class GeocodeAPI(GoogleMapsAPI):
         results = response['results']
 
         result = results[0]
-        coords = ResponseParser.parse_coords(result)
+        coords = parse_coords(result)
 
         return coords
 
@@ -92,6 +85,8 @@ class DistanceMatrixAPI(GoogleMapsAPI):
 class PlacesAPI(GoogleMapsAPI):
 
     ENDPOINT = 'place'
+
+    MAX_RADIUS = '1000'  # meters
 
     @classmethod
     def nearby_search(cls, place_name, nearby_type):
