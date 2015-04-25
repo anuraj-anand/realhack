@@ -27,3 +27,11 @@ class DATA():
         'School',
         'Shopping Mall',
     )
+
+    LOCALITIES = {
+        'Bangalore': (
+          'Indiranagar',
+          'Banashankari',
+          'Malleswaram',
+        ),
+    }

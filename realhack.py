@@ -66,12 +66,20 @@ def three():
 
 @route('/four')
 def four():
-    session['spots'] = tuple(request.form.keys())
+    spots = tuple(request.form.keys())
+    session['spots'] = spots
+
+    city = session['city']
+    localities = DATA.LOCALITIES[city]
+    cuisines = session['cuisines']
+    arts = session['arts']
+
     user_prefs = {
-        'city': session['city'],
-        'cuisines': session['cuisines'],
-        'arts': session['arts'],
-        'spots': session['spots'],
+        'city': city,
+        'localities': localities,
+        'cuisines': cuisines,
+        'arts': arts,
+        'spots': spots,
     }
     scorecard = generate_scorecard(user_prefs)
     return scorecard
