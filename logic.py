@@ -150,4 +150,6 @@ class Scorecard():
             if total[locality] > max_total:
                 max_total = total[locality]
                 winner = locality
+            total_ratings[locality] = int(total_ratings[locality] * 100)
+            total_distances[locality] = int(total_distances[locality] * 100)
         return winner, total_ratings, total_distances
