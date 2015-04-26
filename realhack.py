@@ -27,6 +27,7 @@ def index():
         'multi': False,
         'next': '/one',
         'store': 'city',
+        'heading': '',
     }
     return render_page(info)
 
@@ -38,6 +39,7 @@ def one():
         'options': DATA.CUISINES,
         'multi': True,
         'next': '/two',
+        'heading': 'Cuisines'
     }
     return render_page(info)
 
@@ -49,6 +51,7 @@ def two():
         'options': DATA.ARTS,
         'multi': True,
         'next': '/three',
+        'heading': 'Arts',
     }
     return render_page(info)
 
@@ -60,6 +63,7 @@ def three():
         'options': DATA.SPOTS,
         'multi': True,
         'next': '/four',
+        'heading': 'Spots',
     }
     return render_page(info)
 
