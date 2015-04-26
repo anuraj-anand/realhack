@@ -2,6 +2,10 @@
 
 {% block form %}
 {% for option in options %}
-    <input type="checkbox" name="{{ option }}" value="">{{ option }}</input><br>
+    <div class="checkbox">
+    <label>
+    <input type="checkbox" name="{{ option }}" value=""/>{{ option }}<br>
+        </label>
+    </div>
 {% endfor %}
 {% endblock %}

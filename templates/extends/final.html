@@ -1,0 +1,26 @@
+{% extends 'extends/base.html' %}
+
+{% block body %}
+    <div class="row text-center">
+    <h2>{{ winner }}</h2>
+    <h4>would be the ideal location for you to move in!</h4>
+    </div>
+    <table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+        <th>Locality</th>
+        <th>Rating Score</th>
+        <th>Distance Score</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for locality in ratings %}
+    <tr>
+        <td>{{ locality }}</td>
+        <td>{{ ratings[locality] }}</td>
+        <td>{{ distances[locality] }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

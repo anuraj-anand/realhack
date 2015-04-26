@@ -1,9 +1,12 @@
 {% extends 'extends/base.html' %}
 
 {% block body %}
-<form action='{{ next }}' method="post">
+<form class="form-horizontal" action='{{ next }}' method="post">
+<fieldset>
     {% block form %}
     {% endblock %}
-    <input type="submit" value="Submit">
+<br>
+    <button class="btn btn-primary center-block" type="submit" value="Submit">Submit</button>
+</fieldset>
 </form>
 {% endblock %}

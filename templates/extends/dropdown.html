@@ -1,9 +1,12 @@
 {% extends 'extends/input.html' %}
 
 {% block form %}
-<select name="{{ store }}">
+     <div class="col-lg-10">
+<select class="form-control" name="{{ store }}">
 {% for option in options %}
     <option value="{{ option }}">{{ option }}</option><br>
 {% endfor %}
 </select>
+     </div>
+    <br>
 {% endblock %}
