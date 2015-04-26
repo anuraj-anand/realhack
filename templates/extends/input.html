@@ -1,6 +1,11 @@
 {% extends 'extends/base.html' %}
 
 {% block body %}
+    {% if multi %}
+    <h5>Choose some {{ heading }}:</h5>
+    {% else %}
+    <h5>Choose a {{ heading }}:</h5>
+    {% endif %}
 <form class="form-horizontal" action='{{ next }}' method="post">
 <fieldset>
     {% block form %}

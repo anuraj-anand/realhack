@@ -27,7 +27,7 @@ def index():
         'multi': False,
         'next': '/one',
         'store': 'city',
-        'heading': '',
+        'heading': 'City',
     }
     return render_page(info)
 
